@@ -1,36 +1,65 @@
-//  Task 1: Write a function declaration add that adds 2 numbers.
-function addF(num1, num2) {
-   return num1+num2;
+// ✅ Task: Add a property dynamically: user.country = "India"
+const user = {
+  name: "Sneha",
+  age: 25,
+  greet: function() {
+    console.log(`Hello, I am ${this.name}`);
+  }
+};
+
+user.greet();
+user.country = "India"
+console.log(user);
+
+// ✅ Task: Loop through keys with for...in
+for(let u in user) {
+   console.log(u);
 }
-console.log(addF(2, 3));
 
-// Task 2: Rewrite it as a function expression.
-const addE = function(num1, num2) {
-   return num1+num2;
+// ✅ Task: Add an item → push
+const fruits = ["apple", "banana", "mango"];
+fruits.push("Strawberry", "Jerry");
+console.log(fruits);
+
+// ✅ Task: Remove last item → pop
+fruits.pop()
+console.log(fruits);
+
+// ✅ Task: Use for...of to log each fruit
+for(const fruit of fruits) {
+   console.log(fruit);
 }
-console.log(addE(6, 6));
 
-// Task 3: Rewrite it as an arrow function.
-const addA = (num1, num2) => {
-   return num1+num2;
+/* 🧩 Mini Challenge
+Write a function that:
+Takes an array of users like:
+
+[
+  { name: "Sneha", age: 25 },
+  { name: "Amit", age: 30 }
+]
+Uses destructuring inside a loop to log:
+“Name: Sneha, Age: 25” */
+const users = [
+  { name: "Sneha", age: 25 },
+  { name: "Amit", age: 30 }
+];
+
+function logUsers(userArray) {
+  for (const { name, age } of userArray) {
+    console.log(`Name: ${name}, Age: ${age}`);
+  }
 }
-console.log(addA(2, 1));
+logUsers(users);
 
-// Task 4: Write an arrow function with implicit return
-const addI = (num1, num2) => num1+num2;
-console.log(addI(2, 1));
 
-// Task 5: Write an arrow function that returns an object.
-const createUser = (name, age) => ({name, age});
+// ✔️ Bonus: Nested destructure example
+// If you want to stretch:
+const team = [
+  { name: "Sneha", address: { city: "Pune" } },
+  { name: "Amit", address: { city: "Mumbai" } }
+];
 
-const obj = {
-   value: 42,
-   normalFunc: function() {
-      console.log(this.value);
-   },
-   arrowFunc: () => {
-      console.log(this.value);
-   }
+for (const { name, address: { city } } of team) {
+  console.log(`${name} lives in ${city}`);
 }
-obj.normalFunc();
-// obj.arrowFunc();
