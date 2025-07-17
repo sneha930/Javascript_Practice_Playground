@@ -1,65 +1,29 @@
-// ✅ Task: Add a property dynamically: user.country = "India"
-const user = {
-  name: "Sneha",
-  age: 25,
-  greet: function() {
-    console.log(`Hello, I am ${this.name}`);
-  }
-};
-
-user.greet();
-user.country = "India"
-console.log(user);
-
-// ✅ Task: Loop through keys with for...in
-for(let u in user) {
-   console.log(u);
+// Template Literals
+// Task: greet function with name & day
+function greet(name, day) {
+  return `Hello, ${name}! Have a great ${day}!`;
 }
+console.log(greet("Sneha", "Monday")); 
 
-// ✅ Task: Add an item → push
-const fruits = ["apple", "banana", "mango"];
-fruits.push("Strawberry", "Jerry");
-console.log(fruits);
 
-// ✅ Task: Remove last item → pop
-fruits.pop()
-console.log(fruits);
-
-// ✅ Task: Use for...of to log each fruit
-for(const fruit of fruits) {
-   console.log(fruit);
+// Default Parameters
+// Task: order function with default quantity = 1
+function order(item, quantity = 1) {
+  console.log(`You ordered ${quantity} ${item}.`);
 }
+order("Coffee");  
+order("Tea", 2);  
 
-/* 🧩 Mini Challenge
-Write a function that:
-Takes an array of users like:
+// Spread Operator
+// Task: Merge two arrays of fruits
+const fruits1 = ["Apple", "Banana"];
+const fruits2 = ["Mango", "Orange"];
+const allFruits = [...fruits1, ...fruits2];
+console.log(allFruits); 
 
-[
-  { name: "Sneha", age: 25 },
-  { name: "Amit", age: 30 }
-]
-Uses destructuring inside a loop to log:
-“Name: Sneha, Age: 25” */
-const users = [
-  { name: "Sneha", age: 25 },
-  { name: "Amit", age: 30 }
-];
-
-function logUsers(userArray) {
-  for (const { name, age } of userArray) {
-    console.log(`Name: ${name}, Age: ${age}`);
-  }
+// Rest Operator
+// Task: logNames function with rest operator
+function logNames(...names) {
+  console.log("Names:", names);
 }
-logUsers(users);
-
-
-// ✔️ Bonus: Nested destructure example
-// If you want to stretch:
-const team = [
-  { name: "Sneha", address: { city: "Pune" } },
-  { name: "Amit", address: { city: "Mumbai" } }
-];
-
-for (const { name, address: { city } } of team) {
-  console.log(`${name} lives in ${city}`);
-}
+logNames("Sneha", "Rahul", "Amit");  
